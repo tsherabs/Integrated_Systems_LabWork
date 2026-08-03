@@ -1,0 +1,25 @@
+<?xml version = "1.0" encoding = "utf-8"?> 
+
+<bookstore>
+    <book isbn="978-1-4028-5734-6">
+    <title>Shadows of Ashwood</title>
+    <author>Emily Carter</author>
+    <publisher>Jigme</publisher> 
+    <year>2018</year>
+    <price>Nu. 2000</price>
+    </book>
+    <book isbn="978-0-316-84521-7">
+    <title>The Silent Harbor</title>
+    <author>Daniel Brooks</author>
+    <publisher>Tsherab</publisher>
+    <year>2021</year>
+    <price>nu. 1500</price>
+    </book>
+    <book isbn="978-0-316-84521-6">
+    <title>The Silent Hill</title>
+    <author>Daniel</author>
+    <publisher>Damchoe</publisher>
+    <year>2023</year>
+    <price>Nu. 2500</price>
+    </book>
+</bookstore>
