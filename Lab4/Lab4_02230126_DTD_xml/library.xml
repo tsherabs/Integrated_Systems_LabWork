@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE library SYSTEM "library.dtd">
+<library>
+    <books>
+        <book id = "B1" category="fiction">
+            <title>Book 1</title>
+            <author>Jigme</author>
+            <year>2020</year>
+        </book>
+        <book id="B2" category="non-fiction">
+            <title>Book 2</title>
+            <author>Tsherab</author>
+            <year>2021</year>
+        </book>
+        <book id="B3" category="fantasy">
+            <title>Book 3</title>
+            <author>Damchoe</author>
+            <year>2022</year>
+        </book>
+    </books>
+    <members>
+        <member id="M123" type="base">
+            <name>Karma Sonam</name>
+        </member>
+        <member id="M456" type="premium">
+            <name>Sonam</name>
+        </member>
+        <member id="M789" type="base">
+            <name>Sonam Pema</name>
+        </member>
+    </members>
+    <loans>
+        <loan bookRef="B2" memberidRef="M123">Nu. 350</loan>
+        <loan bookRef="B3" memberidRef="M456">Nu. 400</loan>
+    </loans>
+</library>

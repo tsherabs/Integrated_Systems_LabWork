@@ -1,0 +1,24 @@
+    <!ELEMENT library (books+, members+, loans+)>
+
+    <!ELEMENT books (book+)>
+    <!ELEMENT book (title, author+, year)>
+    <!ELEMENT title (#PCDATA)>
+    <!ELEMENT author (#PCDATA)>
+    <!ELEMENT year (#PCDATA)>
+
+    <!ELEMENT members (member*)>
+    <!ELEMENT member (name)>
+    <!ELEMENT name (#PCDATA)>
+
+    <!ELEMENT loans (loan*)>
+    <!ELEMENT loan (#PCDATA)>
+
+    <!ATTLIST book
+        id ID #REQUIRED
+        category (fiction | non-fiction | fantasy) #REQUIRED>
+    <!ATTLIST member
+        id ID #REQUIRED
+        type (base | premium) "base">
+    <!ATTLIST loan
+        bookRef IDREF #REQUIRED
+        memberidRef IDREF #REQUIRED>
