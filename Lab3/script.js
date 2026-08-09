@@ -3,8 +3,8 @@ fetch("books.xml")
   .then((xmlString) => {
     const parser = new DOMParser(); // Converting the String obtained from the xmlString to xml object since the responce.text gives a String.
     const xmlDoc = parser.parseFromString(xmlString, "application/xml");
-
     const books = xmlDoc.getElementsByTagName("book");
+
 
     const newISBN = document.getElementById("isbn");
     const newTitle = document.getElementById("titleInput"); 
@@ -14,7 +14,8 @@ fetch("books.xml")
     const newPrice = document.getElementById("priceInput"); 
     const addButton = document.getElementById("insert-book");
     const viewButton = document.getElementById("view-books"); 
-    
+    const deleteButton = document.getElementById("delete-books"); 
+    const editButton = document.getElementById("edit-books"); 
 
     addButton.addEventListener('click', () => {
       const newBook = xmlDoc.createElement("book")
@@ -29,6 +30,7 @@ fetch("books.xml")
       newBook.appendChild(userAuthor); 
       newBook.appendChild(userPublisher); 
       newBook.appendChild(userYear); 
+      newBook.appendChild(priceElement); 
 
       userTitle.textContent = newTitle.value;
       userAuthor.textContent = newAuthor.value; 
@@ -46,23 +48,46 @@ fetch("books.xml")
       
 
    }); 
+
    viewButton.addEventListener('click', () => {
     console.log(xmlDoc.getElementsByTagName("book"));
+
      for (let i = 0; i < books.length; i++) {
       const title = books[i].getElementsByTagName("title")[0].textContent; // The GetElementByTagName will look for the tag that has the name title and then store it in an empty object so here it is [ title = the first book's title (inside the first book there could be any title tags)]
       const author = books[i].getElementsByTagName("author")[0].textContent;
-      const publisher =
-        books[i].getElementsByTagName("publisher")[0].textContent;
+      const publisher = books[i].getElementsByTagName("publisher")[0].textContent;
       const year = books[i].getElementsByTagName("year")[0].textContent;
       const price = books[i].getElementsByTagName("price")[0].textContent;
 
-      console.log("---Books" + i + 1);
+      console.log("---Books" + (i + 1));
       console.log("Title: " + title);
       console.log("Author: " + author);
       console.log("Publisher: " + publisher);
       console.log("Year: " + year);
       console.log("Price: " + price);
     }
-   }); 
-  })
+   });
+
+
+   deleteButton.addEventListener('click', () => {
+    for(let i = 0; i < books.length; i++){
+          const newBookString = books[i].getAttribute("isbn"); 
+          parseInt(newBookString, 123);
+          if(books[i].getAttribute("isbn") == 123){
+            books[i].remove();
+            break; 
+          }
+    }  
+  }); 
+
+  editButton.addEventListener('click', () => {
+    for(let i = 0; i < books.length; i++){
+     const getISBN =  books[i].getAttribute("isbn"); 
+      if(getISBN === "978-0-316-84521-6"){
+      books[i].getElementsByTagName("price")[0].textContent = "2000"; 
+      books[i].getElementsByTagName("year")[0].textContent = "2020"; 
+      }
+    }
+  });
+  })  
   

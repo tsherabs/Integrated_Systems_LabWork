@@ -22,4 +22,18 @@
         <year>2023</year>
         <price>Nu. 2500</price>
     </book>
+     <book isbn="978-1-250-12345-6">
+        <title>Echoes of Tomorrow</title>
+        <author>Olivia Martin</author>
+        <publisher>Yaya</publisher>
+        <year>2019</year>
+        <price>Nu. 1500</price>
+    </book>
+    <book isbn="978-0-7432-1122-8">
+        <title>The Hidden Forest</title>
+        <author>Olivia Martin</author>
+        <publisher>Tub</publisher>
+        <year>2018</year>
+        <price>Nu. 1900</price>
+    </book>
 </bookstore>
