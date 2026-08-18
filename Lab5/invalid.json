@@ -1,0 +1,8 @@
+{
+    "isbn": "12345678901234", 
+    "title": "Harry Potter", 
+    "authors": [], 
+    "year": "2024"
+    "format": "hardcover", 
+    "available": TRUE
+}
