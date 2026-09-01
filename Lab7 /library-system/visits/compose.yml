@@ -1,0 +1,25 @@
+services:
+  web: 
+    build: . 
+    ports:
+    - "5002:5000"
+    environment: 
+      SITE_NAME: "Jigme"
+      CACHE_HOST: "cache"
+    restart: unless-stopped
+    depends_on: 
+      cache: 
+        condition: service_healthy
+
+  cache: 
+    image: redis:7-alpine 
+    restart: unless-stopped
+    volumes: 
+      - cachedata:/data
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 10s 
+      timeout: 3s 
+      retries: 3 
+volumes:
+  cachedata:
