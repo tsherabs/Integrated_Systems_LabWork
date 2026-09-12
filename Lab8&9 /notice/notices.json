@@ -1,0 +1,24 @@
+{
+    "notices": [
+        {
+            "title": "Title 1", 
+            "date": "Date 1",
+            "body": "Body 1"
+        }, 
+        {
+            "title": "Title 2", 
+            "date": "Date 2",
+            "body": "This is a test to see updated content"
+        }, 
+        {
+            "title": "Title 3", 
+            "date": "Date 3",
+            "body": "Body 3"
+        },
+        {
+            "title": "Title 4", 
+            "date": "Date 4",
+            "body": "Body 4"
+        }
+    ]
+}
