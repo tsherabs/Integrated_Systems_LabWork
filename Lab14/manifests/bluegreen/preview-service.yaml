@@ -6,6 +6,8 @@ kind: Service
 metadata:
   name: notice-board-preview
   namespace: nb-02230126
+  labels: 
+    cte412/rebuild: "managed"
 spec:
   # Internal access only; production uses separate Services.
   type: ClusterIP

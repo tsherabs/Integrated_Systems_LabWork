@@ -7,6 +7,8 @@ kind: Service
 metadata:
   name: notice-board
   namespace: nb-02230126
+  labels:
+    cte412/rebuild: "managed"
 spec:
   type: ClusterIP
   selector:
@@ -28,6 +30,9 @@ kind: Service
 metadata:
   name: notice-board-ext
   namespace: nb-02230126
+  labels: 
+    cte412/rebuild: "managed"
+
 spec:
   type: NodePort
   selector:

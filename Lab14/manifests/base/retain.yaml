@@ -1,0 +1,64 @@
+# Purpose: Retain the namespace and quota policies during Task 9.
+# Apply: kubectl apply -f manifests/base/retain.yaml
+
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: nb-02230126
+  labels:
+    app.kubernetes.io/part-of: campus-notice-board
+    cte412/practical: "06"
+    # Include retained resource in the cleanup selection.
+    cte412/rebuild: "managed"
+  annotations:
+    cte412/student-name: "Jigme Tsherab Damchoe"
+
+---
+# Purpose: Preserve existing resource quota limits.
+# Apply: kubectl apply -f manifests/base/retain.yaml
+
+apiVersion: v1
+kind: ResourceQuota
+metadata:
+  name: notice-board-quota
+  namespace: nb-02230126
+  labels:
+    cte412/rebuild: "managed"
+spec:
+  hard:
+    requests.cpu: "1"
+    requests.memory: 1Gi
+    limits.cpu: "2"
+    limits.memory: 2Gi
+    pods: "15"
+    count/services: "4"
+
+---
+# Purpose: Preserve default container resource limits.
+# Apply: kubectl apply -f manifests/base/retain.yaml
+
+apiVersion: v1
+kind: LimitRange
+metadata:
+  name: notice-board-limits
+  namespace: nb-02230126
+  labels:
+    cte412/rebuild: "managed"
+spec:
+  limits:
+    - type: Container
+      # Defaults control resource allocation when omitted.
+      default:
+        cpu: 200m
+        memory: 128Mi
+      defaultRequest:
+        cpu: 50m
+        memory: 64Mi
+      # Maximum permitted container resources.
+      max:
+        cpu: 500m
+        memory: 512Mi
+      # Minimum permitted container resources.
+      min:
+        cpu: 10m
+        memory: 16Mi

@@ -11,6 +11,7 @@ metadata:
   labels:
     # Identify this Pod separately from application replicas.
     app: availability-monitor
+    cte412/rebuild: "managed"
 spec:
   # Restart the monitor container if it crashes.
   restartPolicy: Always

@@ -1,0 +1,17 @@
+Full monitor log lines:
+   12971 evidence/t9-monitor-full.log
+First five records:
+2026-10-19T16:13:48Z OK {"version": "1.0.0", "student": "02230126", "pod": "notice-board-c96f78c64-fjswb"}
+2026-10-19T16:13:49Z OK {"version": "1.0.0", "student": "02230126", "pod": "notice-board-c96f78c64-npbdr"}
+2026-10-19T16:13:49Z OK {"version": "1.0.0", "student": "02230126", "pod": "notice-board-c96f78c64-npbdr"}
+2026-10-19T16:13:50Z OK {"version": "1.0.0", "student": "02230126", "pod": "notice-board-c96f78c64-npbdr"}
+2026-10-19T16:13:50Z OK {"version": "1.0.0", "student": "02230126", "pod": "notice-board-c96f78c64-npbdr"}
+Last five records:
+2026-10-19T18:03:09Z OK {"version": "1.1.0", "student": "02230126", "pod": "notice-board-green-745f96875c-bhcfd"}
+2026-10-19T18:03:10Z OK {"version": "1.1.0", "student": "02230126", "pod": "notice-board-green-745f96875c-lx4fs"}
+2026-10-19T18:03:10Z OK {"version": "1.1.0", "student": "02230126", "pod": "notice-board-green-745f96875c-lx4fs"}
+2026-10-19T18:03:11Z OK {"version": "1.1.0", "student": "02230126", "pod": "notice-board-green-745f96875c-bhcfd"}
+2026-10-19T18:03:11Z OK {"version": "1.1.0", "student": "02230126", "pod": "notice-board-green-745f96875c-bhcfd"}
+Monitor status:
+NAME      READY   STATUS    RESTARTS   AGE
+monitor   1/1     Running   0          111m

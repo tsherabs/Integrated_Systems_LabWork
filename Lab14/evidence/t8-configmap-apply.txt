@@ -1,0 +1,1 @@
+configmap/notice-board-flags configured

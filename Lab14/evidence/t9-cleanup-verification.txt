@@ -1,0 +1,30 @@
+NAME                                      READY   STATUS    RESTARTS   AGE
+pod/monitor                               1/1     Running   0          130m
+pod/notice-board-blue-ff95bdfc8-46fbg     1/1     Running   0          53m
+pod/notice-board-blue-ff95bdfc8-cm5cm     1/1     Running   0          53m
+pod/notice-board-blue-ff95bdfc8-nlgdn     1/1     Running   0          53m
+pod/notice-board-green-745f96875c-bhcfd   1/1     Running   0          26m
+pod/notice-board-green-745f96875c-dbwrv   1/1     Running   0          26m
+pod/notice-board-green-745f96875c-lx4fs   1/1     Running   0          26m
+
+NAME                           TYPE        CLUSTER-IP      EXTERNAL-IP   PORT(S)        AGE
+service/notice-board           ClusterIP   10.96.239.92    <none>        80/TCP         141m
+service/notice-board-ext       NodePort    10.96.109.241   <none>        80:30090/TCP   141m
+service/notice-board-preview   ClusterIP   10.96.87.93     <none>        80/TCP         51m
+
+NAME                                 READY   UP-TO-DATE   AVAILABLE   AGE
+deployment.apps/notice-board-blue    3/3     3            3           53m
+deployment.apps/notice-board-green   3/3     3            3           53m
+
+NAME                                            DESIRED   CURRENT   READY   AGE
+replicaset.apps/notice-board-blue-ff95bdfc8     3         3         3       53m
+replicaset.apps/notice-board-green-745f96875c   3         3         3       26m
+replicaset.apps/notice-board-green-787654b648   0         0         0       53m
+NAME                 DATA   AGE
+kube-root-ca.crt     1      3h29m
+notice-board-flags   1      54m
+NAME                               REQUEST                                                                             LIMIT                                           AGE
+resourcequota/notice-board-quota   count/services: 3/4, pods: 7/15, requests.cpu: 325m/1, requests.memory: 416Mi/1Gi   limits.cpu: 1300m/2, limits.memory: 832Mi/2Gi   3h24m
+
+NAME                             CREATED AT
+limitrange/notice-board-limits   2026-10-19T15:00:07Z

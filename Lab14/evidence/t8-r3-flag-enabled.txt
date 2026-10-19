@@ -1,0 +1,9 @@
+Green Pod environment values:
+Pod: notice-board-green-745f96875c-bhcfd
+true
+Pod: notice-board-green-745f96875c-dbwrv
+true
+Pod: notice-board-green-745f96875c-lx4fs
+true
+Production notices:
+{"notices": [{"id": 3, "title": "Campus Sports Event", "category": "events", "pinned": true}, {"id": 1, "title": "Examination Schedule Released", "category": "academic", "pinned": false}, {"id": 2, "title": "Library Opening Hours Updated", "category": "facilities", "pinned": false}], "pinnedFirst": true}

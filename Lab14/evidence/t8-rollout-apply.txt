@@ -1,0 +1,2 @@
+deployment.apps/notice-board-blue unchanged
+deployment.apps/notice-board-green configured

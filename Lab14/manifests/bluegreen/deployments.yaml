@@ -11,6 +11,7 @@ metadata:
     app: notice-board
     # Select workloads for declarative pruning.
     cte412/release-group: notice-board-workload
+    cte412/rebuild: "managed"
 spec:
   # Each colour has three replicas.
   replicas: 3
@@ -81,6 +82,7 @@ metadata:
   labels:
     app: notice-board
     cte412/release-group: notice-board-workload
+    cte412/rebuild: "managed"
 spec:
   replicas: 3
   minReadySeconds: 5
@@ -99,6 +101,8 @@ spec:
         app: notice-board
         version: "1.1.0"
         slot: green
+      annotations: 
+        cte412/flag-revision: "pinned-enabled-1"
     spec:
       containers:
         - name: notice-board

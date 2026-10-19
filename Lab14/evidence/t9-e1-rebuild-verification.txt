@@ -1,0 +1,24 @@
+=== Deployments ===
+NAME                 READY   UP-TO-DATE   AVAILABLE   AGE
+notice-board-blue    3/3     3            3           55m
+notice-board-green   3/3     3            3           55m
+=== Pods ===
+NAME                                  READY   STATUS    RESTARTS   AGE    LABELS
+monitor                               1/1     Running   0          132m   app=availability-monitor,cte412/rebuild=managed
+notice-board-blue-ff95bdfc8-46fbg     1/1     Running   0          55m    app=notice-board,pod-template-hash=ff95bdfc8,slot=blue,version=1.0.0
+notice-board-blue-ff95bdfc8-cm5cm     1/1     Running   0          55m    app=notice-board,pod-template-hash=ff95bdfc8,slot=blue,version=1.0.0
+notice-board-blue-ff95bdfc8-nlgdn     1/1     Running   0          55m    app=notice-board,pod-template-hash=ff95bdfc8,slot=blue,version=1.0.0
+notice-board-green-745f96875c-bhcfd   1/1     Running   0          28m    app=notice-board,pod-template-hash=745f96875c,slot=green,version=1.1.0
+notice-board-green-745f96875c-dbwrv   1/1     Running   0          28m    app=notice-board,pod-template-hash=745f96875c,slot=green,version=1.1.0
+notice-board-green-745f96875c-lx4fs   1/1     Running   0          28m    app=notice-board,pod-template-hash=745f96875c,slot=green,version=1.1.0
+=== Services ===
+NAME                   TYPE        CLUSTER-IP      EXTERNAL-IP   PORT(S)        AGE
+notice-board           ClusterIP   10.96.239.92    <none>        80/TCP         143m
+notice-board-ext       NodePort    10.96.109.241   <none>        80:30090/TCP   143m
+notice-board-preview   ClusterIP   10.96.87.93     <none>        80/TCP         53m
+=== Production version ===
+{"version": "1.1.0", "student": "02230126", "pod": "notice-board-green-745f96875c-lx4fs"}
+=== Feature flag ===
+true
+=== Production notices ===
+{"notices": [{"id": 3, "title": "Campus Sports Event", "category": "events", "pinned": true}, {"id": 1, "title": "Examination Schedule Released", "category": "academic", "pinned": false}, {"id": 2, "title": "Library Opening Hours Updated", "category": "facilities", "pinned": false}], "pinnedFirst": true}

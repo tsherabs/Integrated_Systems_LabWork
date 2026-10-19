@@ -1,0 +1,1 @@
+error: invalid GroupVersionKind format: v1/Service, please follow <group/version/kind>

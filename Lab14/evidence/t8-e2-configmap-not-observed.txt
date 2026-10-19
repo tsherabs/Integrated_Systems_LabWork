@@ -1,0 +1,11 @@
+ConfigMap value:
+true
+Running green Pod environment values:
+Pod: notice-board-green-787654b648-gh7tm
+false
+Pod: notice-board-green-787654b648-p8mcj
+false
+Pod: notice-board-green-787654b648-th76z
+false
+Production notices:
+{"notices": [{"id": 1, "title": "Examination Schedule Released", "category": "academic", "pinned": false}, {"id": 2, "title": "Library Opening Hours Updated", "category": "facilities", "pinned": false}, {"id": 3, "title": "Campus Sports Event", "category": "events", "pinned": true}], "pinnedFirst": false}

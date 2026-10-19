@@ -1,0 +1,16 @@
+=== 1. Apply feature flag ===
+configmap/notice-board-flags unchanged
+=== 2. Apply blue and green Deployments ===
+deployment.apps/notice-board-blue unchanged
+deployment.apps/notice-board-green unchanged
+=== 3. Apply production Services ===
+service/notice-board unchanged
+service/notice-board-ext unchanged
+=== 4. Apply preview Service ===
+service/notice-board-preview unchanged
+=== 5. Apply monitor ===
+pod/monitor unchanged
+=== 6. Verify blue rollout ===
+deployment "notice-board-blue" successfully rolled out
+=== 7. Verify green rollout ===
+deployment "notice-board-green" successfully rolled out

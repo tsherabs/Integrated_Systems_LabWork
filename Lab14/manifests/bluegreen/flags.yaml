@@ -6,6 +6,8 @@ kind: ConfigMap
 metadata:
   name: notice-board-flags
   namespace: nb-02230126
+  labels:
+    cte412/rebuild: "managed"
 data:
   # Keep the feature disabled until Task 8.
-  FEATURE_PINNED: "false"
+  FEATURE_PINNED: "true"
