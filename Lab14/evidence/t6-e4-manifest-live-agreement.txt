@@ -1,0 +1,6 @@
+Repository manifest:
+        version: "1.1.0"
+          image: notice-board:02230126-1.1.0
+Live Deployment:
+Image: notice-board:02230126-1.1.0
+Version: 1.1.0

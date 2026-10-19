@@ -1,0 +1,1 @@
+deployment.apps/notice-board rolled back

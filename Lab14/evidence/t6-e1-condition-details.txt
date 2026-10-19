@@ -1,0 +1,10 @@
+Type: Available
+Status: True
+Reason: MinimumReplicasAvailable
+Message: Deployment has minimum availability.
+
+Type: Progressing
+Status: False
+Reason: ProgressDeadlineExceeded
+Message: ReplicaSet "notice-board-5bbc4b6994" has timed out progressing.
+

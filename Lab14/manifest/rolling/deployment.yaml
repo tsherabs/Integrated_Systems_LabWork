@@ -1,5 +1,5 @@
 
-# Purpose: Release Notice Board v1.1.0 using Recreate.
+# Purpose: Test a failed Notice Board release using Kubernetes.
 # Apply: kubectl apply -f manifests/rolling/deployment.yaml
 
 apiVersion: apps/v1
@@ -9,18 +9,29 @@ metadata:
   namespace: nb-02230126
   labels:
     app: notice-board
+  annotations:
+    # Record the reason for this failed-release revision.
+    kubernetes.io/change-cause: "Task 6 broken release 1.1.0"
+
 spec:
-  # Keep three application replicas.
+  # Maintain three desired application replicas.
   replicas: 3
 
-  # Recreate terminates old replicas before creating new ones.
-  strategy:
-    type: RollingUpdate
-    rollingUpdate: 
-      maxUnavailable: 0 
-      maxSurge: 1
+  # Report a failed rollout after 60 seconds without progress.
+  progressDeadlineSeconds: 60
+
+  # New Pods must remain ready for five seconds.
   minReadySeconds: 5
 
+  # Preserve the three existing healthy replicas.
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      # Do not voluntarily remove any available old replica.
+      maxUnavailable: 0
+
+      # Allow one additional Pod during the update.
+      maxSurge: 1
 
   selector:
     matchLabels:
@@ -30,25 +41,27 @@ spec:
     metadata:
       labels:
         app: notice-board
-        # Label Pods with the new application version.
+        # Identify the broken release in the Pod labels.
         version: "1.1.0"
       annotations:
-        # Records why this deployment revision was created.
-        kubernetes.io/change-cause: "Task 5 Recreate release to 1.1.0"
+        # Record the Pod-template revision's change-cause.
+        kubernetes.io/change-cause: "Task 6 broken release 1.1.0"
 
     spec:
       containers:
         - name: notice-board
+
+          # This image intentionally never becomes healthy.
           image: notice-board:02230126-1.1.0
 
-          # Only use images previously loaded into kind.
+          # Images must already exist on kind nodes.
           imagePullPolicy: Never
 
           ports:
             - name: http
               containerPort: 8080
 
-          # Stay within the namespace quota.
+          # Keep resources within namespace quota.
           resources:
             requests:
               cpu: 50m
@@ -57,7 +70,8 @@ spec:
               cpu: 200m
               memory: 128Mi
 
-          # Only ready application instances receive requests.
+          # Broken release fails this readiness probe forever.
+          # Therefore, it must not receive production traffic.
           readinessProbe:
             httpGet:
               path: /healthz
@@ -66,8 +80,9 @@ spec:
             timeoutSeconds: 1
             failureThreshold: 3
 
-          # Liveness checks /version, not /healthz, because
-          # /healthz intentionally fails during application warm-up.
+          # Check /version rather than /healthz.
+          # A failed readiness check must not automatically
+          # restart the container during warm-up.
           livenessProbe:
             httpGet:
               path: /version

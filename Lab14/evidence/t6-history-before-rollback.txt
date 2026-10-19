@@ -1,0 +1,7 @@
+deployment.apps/notice-board 
+REVISION  CHANGE-CAUSE
+1         <none>
+3         Task 5 Recreate release to 1.0.0
+4         Task 5 Recreate release to 1.1.0
+5         Task 6 broken release 1.2.0-broken
+
