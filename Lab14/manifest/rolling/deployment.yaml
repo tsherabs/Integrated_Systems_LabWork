@@ -1,0 +1,77 @@
+
+# Purpose: Deploy three replicas of Campus Notice Board v1.0.0.
+# Apply: kubectl apply -f manifests/rolling/deployment.yaml
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: notice-board
+  namespace: nb-02230126
+  labels:
+    app: notice-board
+spec:
+  # Three replicas provide multiple available API instances.
+  replicas: 3
+
+  # Use a rolling strategy, to be explicitly tested in Task 5.
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      # Keep all three old Pods available during updates.
+      maxUnavailable: 0
+      # Allow only one extra Pod during an update.
+      maxSurge: 1
+
+  selector:
+    matchLabels:
+      app: notice-board
+
+  template:
+    metadata:
+      labels:
+        app: notice-board
+        version: "1.0.0"
+
+    spec:
+      containers:
+        - name: notice-board
+          image: notice-board:02230126-1.0.0
+
+          # Images are preloaded into kind; never pull from a registry.
+          imagePullPolicy: Never
+
+          ports:
+            - name: http
+              containerPort: 8080
+
+          # Each Pod has a small guaranteed resource allocation.
+          # Three baseline Pods request 150m CPU and 192Mi.
+          resources:
+            requests:
+              cpu: 50m
+              memory: 64Mi
+            limits:
+              cpu: 200m
+              memory: 128Mi
+
+          # Readiness tests whether a Pod can receive traffic.
+          # The app reports unhealthy during its first five seconds.
+          readinessProbe:
+            httpGet:
+              path: /healthz
+              port: http
+            periodSeconds: 2
+            timeoutSeconds: 1
+            failureThreshold: 3
+
+          # Liveness uses /version, not /healthz.
+          # The five-second warm-up should not restart a healthy
+          # process that simply isn't ready to serve traffic yet.
+          livenessProbe:
+            httpGet:
+              path: /version
+              port: http
+            initialDelaySeconds: 10
+            periodSeconds: 10
+            timeoutSeconds: 2
+            failureThreshold: 3

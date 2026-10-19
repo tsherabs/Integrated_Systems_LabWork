@@ -1,0 +1,22 @@
+# Purpose: Expose the Notice Board internally to the cluster.
+# Apply: kubectl apply -f manifests/rolling/service.yaml
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: notice-board
+  namespace: nb-02230126
+spec:
+  # Only route to Pods carrying this application label.
+  selector:
+    app: notice-board
+
+  # Internal-only Service; external access uses NodePort.
+  type: ClusterIP
+
+  ports:
+    # Clients use port 80, forwarded to the named HTTP port.
+    - name: http
+      port: 80
+      targetPort: http
+      protocol: TCP

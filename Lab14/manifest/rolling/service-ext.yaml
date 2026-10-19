@@ -1,0 +1,23 @@
+# Purpose: Expose the application on localhost:30090.
+# Apply: kubectl apply -f manifests/rolling/service-ext.yaml
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: notice-board-ext
+  namespace: nb-02230126
+spec:
+  # Send external requests to the Notice Board Pods.
+  selector:
+    app: notice-board
+
+  # Expose an explicit node port mapped by kind.
+  type: NodePort
+
+  ports:
+    - name: http
+      port: 80
+      targetPort: http
+      # Matches the host-to-node mapping in kind-cluster.yaml.
+      nodePort: 30090
+      protocol: TCP

@@ -1,0 +1,4 @@
+NAME                           READY   STATUS    RESTARTS   AGE   LABELS
+notice-board-c96f78c64-fjswb   1/1     Running   0          2m    app=notice-board,pod-template-hash=c96f78c64,version=1.0.0
+notice-board-c96f78c64-npbdr   1/1     Running   0          2m    app=notice-board,pod-template-hash=c96f78c64,version=1.0.0
+notice-board-c96f78c64-pxlqn   1/1     Running   0          2m    app=notice-board,pod-template-hash=c96f78c64,version=1.0.0

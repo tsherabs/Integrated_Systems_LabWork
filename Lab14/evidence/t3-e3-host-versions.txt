@@ -1,0 +1,12 @@
+{"version": "1.0.0", "student": "02230126", "pod": "notice-board-c96f78c64-npbdr"}
+{"version": "1.0.0", "student": "02230126", "pod": "notice-board-c96f78c64-fjswb"}
+{"version": "1.0.0", "student": "02230126", "pod": "notice-board-c96f78c64-fjswb"}
+{"version": "1.0.0", "student": "02230126", "pod": "notice-board-c96f78c64-npbdr"}
+{"version": "1.0.0", "student": "02230126", "pod": "notice-board-c96f78c64-fjswb"}
+{"version": "1.0.0", "student": "02230126", "pod": "notice-board-c96f78c64-pxlqn"}
+{"version": "1.0.0", "student": "02230126", "pod": "notice-board-c96f78c64-fjswb"}
+{"version": "1.0.0", "student": "02230126", "pod": "notice-board-c96f78c64-pxlqn"}
+{"version": "1.0.0", "student": "02230126", "pod": "notice-board-c96f78c64-npbdr"}
+{"version": "1.0.0", "student": "02230126", "pod": "notice-board-c96f78c64-fjswb"}
+{"version": "1.0.0", "student": "02230126", "pod": "notice-board-c96f78c64-fjswb"}
+{"version": "1.0.0", "student": "02230126", "pod": "notice-board-c96f78c64-pxlqn"}
