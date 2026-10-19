@@ -1,0 +1,12 @@
+NAME      READY   STATUS    RESTARTS   AGE    IP           NODE                      NOMINATED NODE   READINESS GATES
+monitor   1/1     Running   0          6m6s   10.244.1.3   cte412-02230126-worker2   <none>           <none>
+2026-10-19T16:17:47Z OK {"version": "1.0.0", "student": "02230126", "pod": "notice-board-c96f78c64-pxlqn"}
+2026-10-19T16:17:48Z OK {"version": "1.0.0", "student": "02230126", "pod": "notice-board-c96f78c64-pxlqn"}
+2026-10-19T16:17:48Z OK {"version": "1.0.0", "student": "02230126", "pod": "notice-board-c96f78c64-npbdr"}
+2026-10-19T16:17:49Z OK {"version": "1.0.0", "student": "02230126", "pod": "notice-board-c96f78c64-fjswb"}
+2026-10-19T16:17:49Z OK {"version": "1.0.0", "student": "02230126", "pod": "notice-board-c96f78c64-npbdr"}
+2026-10-19T16:17:50Z OK {"version": "1.0.0", "student": "02230126", "pod": "notice-board-c96f78c64-pxlqn"}
+2026-10-19T16:17:50Z OK {"version": "1.0.0", "student": "02230126", "pod": "notice-board-c96f78c64-fjswb"}
+2026-10-19T16:17:51Z OK {"version": "1.0.0", "student": "02230126", "pod": "notice-board-c96f78c64-pxlqn"}
+2026-10-19T16:17:51Z OK {"version": "1.0.0", "student": "02230126", "pod": "notice-board-c96f78c64-pxlqn"}
+2026-10-19T16:17:52Z OK {"version": "1.0.0", "student": "02230126", "pod": "notice-board-c96f78c64-pxlqn"}

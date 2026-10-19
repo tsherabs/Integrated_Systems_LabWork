@@ -1,0 +1,50 @@
+
+# Purpose: Continuously monitor Campus Notice Board availability.
+# Apply: kubectl apply -f manifests/base/monitor.yaml
+# Keep this Pod running throughout Tasks 4–8.
+
+apiVersion: v1
+kind: Pod
+metadata:
+  name: monitor
+  namespace: nb-02230126
+  labels:
+    # Identify this Pod separately from application replicas.
+    app: availability-monitor
+spec:
+  # Restart the monitor container if it crashes.
+  restartPolicy: Always
+
+  containers:
+    - name: monitor
+      # BusyBox is permitted by the practical's Alpine/BusyBox rule.
+      image: busybox:1.36
+
+      # Avoid registry access; preload this image into kind first.
+      imagePullPolicy: Never
+
+      command:
+        - /bin/sh
+        - -c
+        - |
+          while true; do
+            TS=$(date -u +"%Y-%m-%dT%H:%M:%SZ")
+
+            # wget exits nonzero on network and HTTP failures.
+            if BODY=$(wget -q -T 2 -O - http://notice-board/version 2>&1); then
+              printf '%s OK %s\n' "$TS" "$BODY"
+            else
+              printf '%s FAIL %s\n' "$TS" "$BODY"
+            fi
+
+            sleep 0.5
+          done
+
+      # Reserve enough resources for a small shell HTTP client.
+      resources:
+        requests:
+          cpu: 25m
+          memory: 32Mi
+        limits:
+          cpu: 100m
+          memory: 64Mi
