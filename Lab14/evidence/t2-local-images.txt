@@ -1,0 +1,4 @@
+IMAGE                                ID             DISK USAGE   CONTENT SIZE   EXTRA
+notice-board:02230126-1.0.0          d5d3a6e698a4       87.8MB         21.4MB        
+notice-board:02230126-1.1.0          2966bab45d57       87.8MB         21.4MB        
+notice-board:02230126-1.2.0-broken   800f07d5c72b       87.8MB         21.4MB        

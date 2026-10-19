@@ -1,0 +1,12 @@
+Starting baseline container
+d008e57e2f76b3263c13982db9dfd2b0492ce1d46426f1077112fd7bf5e1a79a
+Immediate health check:
+2026-10-19T15:20:38Z
+
+HTTP 000
+Version:
+
+Health check after warm-up:
+2026-10-19T15:20:45Z
+{"status": "healthy"}
+HTTP 200
