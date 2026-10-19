@@ -1,0 +1,9 @@
+===== Availability Summary =====
+Total requests: 430
+Failed requests: 0
+First timestamp: 2026-10-19T17:34:39Z
+Last timestamp: 2026-10-19T17:38:15Z
+Responses by version:
+  1.0.0: 204
+  1.1.0: 226
+================================

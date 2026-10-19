@@ -1,0 +1,15 @@
+NAME                                 READY   UP-TO-DATE   AVAILABLE   AGE   LABELS
+deployment.apps/notice-board         3/3     3            3           95m   app=notice-board,cte412/release-group=notice-board-workload
+deployment.apps/notice-board-blue    3/3     3            3           41s   app=notice-board,cte412/release-group=notice-board-workload
+deployment.apps/notice-board-green   3/3     3            3           41s   app=notice-board,cte412/release-group=notice-board-workload
+
+NAME                                      READY   STATUS    RESTARTS   AGE   LABELS
+pod/notice-board-594f4b9bc-rnh5b          1/1     Running   0          11m   app=notice-board,pod-template-hash=594f4b9bc,version=1.1.0
+pod/notice-board-594f4b9bc-w5qf9          1/1     Running   0          11m   app=notice-board,pod-template-hash=594f4b9bc,version=1.1.0
+pod/notice-board-594f4b9bc-zsg6c          1/1     Running   0          11m   app=notice-board,pod-template-hash=594f4b9bc,version=1.1.0
+pod/notice-board-blue-ff95bdfc8-46fbg     1/1     Running   0          41s   app=notice-board,pod-template-hash=ff95bdfc8,slot=blue,version=1.0.0
+pod/notice-board-blue-ff95bdfc8-cm5cm     1/1     Running   0          41s   app=notice-board,pod-template-hash=ff95bdfc8,slot=blue,version=1.0.0
+pod/notice-board-blue-ff95bdfc8-nlgdn     1/1     Running   0          41s   app=notice-board,pod-template-hash=ff95bdfc8,slot=blue,version=1.0.0
+pod/notice-board-green-787654b648-gh7tm   1/1     Running   0          41s   app=notice-board,pod-template-hash=787654b648,slot=green,version=1.1.0
+pod/notice-board-green-787654b648-p8mcj   1/1     Running   0          41s   app=notice-board,pod-template-hash=787654b648,slot=green,version=1.1.0
+pod/notice-board-green-787654b648-th76z   1/1     Running   0          41s   app=notice-board,pod-template-hash=787654b648,slot=green,version=1.1.0

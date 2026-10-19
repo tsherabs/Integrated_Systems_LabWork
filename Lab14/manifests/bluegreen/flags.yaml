@@ -1,0 +1,11 @@
+# Purpose: Configure optional pinned-first notice ordering.
+# Apply: kubectl apply -f manifests/bluegreen/flags.yaml
+
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: notice-board-flags
+  namespace: nb-02230126
+data:
+  # Keep the feature disabled until Task 8.
+  FEATURE_PINNED: "false"

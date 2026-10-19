@@ -1,0 +1,10 @@
+Name:            notice-board-quota
+Namespace:       nb-02230126
+Resource         Used   Hard
+--------         ----   ----
+count/services   3      4
+limits.cpu       1300m  2
+limits.memory    832Mi  2Gi
+pods             7      15
+requests.cpu     325m   1
+requests.memory  416Mi  1Gi

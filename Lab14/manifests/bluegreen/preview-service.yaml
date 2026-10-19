@@ -1,0 +1,20 @@
+# Purpose: Expose green for internal pre-release testing.
+# Apply: kubectl apply -f manifests/bluegreen/preview-service.yaml
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: notice-board-preview
+  namespace: nb-02230126
+spec:
+  # Internal access only; production uses separate Services.
+  type: ClusterIP
+  selector:
+    app: notice-board
+    # Preview always sends traffic to the green release.
+    slot: green
+  ports:
+    - name: http
+      port: 80
+      targetPort: http
+      protocol: TCP

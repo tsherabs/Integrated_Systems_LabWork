@@ -1,0 +1,54 @@
+NAME                   TYPE        CLUSTER-IP      EXTERNAL-IP   PORT(S)        AGE
+notice-board           ClusterIP   10.96.239.92    <none>        80/TCP         91m
+notice-board-ext       NodePort    10.96.109.241   <none>        80:30090/TCP   91m
+notice-board-preview   ClusterIP   10.96.87.93     <none>        80/TCP         49s
+Name:                     notice-board
+Namespace:                nb-02230126
+Labels:                   <none>
+Annotations:              <none>
+Selector:                 app=notice-board,slot=blue
+Type:                     ClusterIP
+IP Family Policy:         SingleStack
+IP Families:              IPv4
+IP:                       10.96.239.92
+IPs:                      10.96.239.92
+Port:                     http  80/TCP
+TargetPort:               http/TCP
+Endpoints:                10.244.1.9:8080,10.244.1.10:8080,10.244.2.14:8080
+Session Affinity:         None
+Internal Traffic Policy:  Cluster
+Events:                   <none>
+Name:                     notice-board-ext
+Namespace:                nb-02230126
+Labels:                   <none>
+Annotations:              <none>
+Selector:                 app=notice-board,slot=blue
+Type:                     NodePort
+IP Family Policy:         SingleStack
+IP Families:              IPv4
+IP:                       10.96.109.241
+IPs:                      10.96.109.241
+Port:                     http  80/TCP
+TargetPort:               http/TCP
+NodePort:                 http  30090/TCP
+Endpoints:                10.244.1.9:8080,10.244.1.10:8080,10.244.2.14:8080
+Session Affinity:         None
+External Traffic Policy:  Cluster
+Internal Traffic Policy:  Cluster
+Events:                   <none>
+Name:                     notice-board-preview
+Namespace:                nb-02230126
+Labels:                   <none>
+Annotations:              <none>
+Selector:                 app=notice-board,slot=green
+Type:                     ClusterIP
+IP Family Policy:         SingleStack
+IP Families:              IPv4
+IP:                       10.96.87.93
+IPs:                      10.96.87.93
+Port:                     http  80/TCP
+TargetPort:               http/TCP
+Endpoints:                10.244.1.11:8080,10.244.2.13:8080,10.244.2.15:8080
+Session Affinity:         None
+Internal Traffic Policy:  Cluster
+Events:                   <none>

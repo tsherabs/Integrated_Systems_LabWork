@@ -1,0 +1,3 @@
+deployment.apps/notice-board-blue unchanged
+deployment.apps/notice-board-green unchanged
+deployment.apps/notice-board pruned

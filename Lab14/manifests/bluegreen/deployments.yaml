@@ -1,0 +1,138 @@
+
+# Purpose: Deploy blue v1.0.0 and green v1.1.0 simultaneously.
+# Apply: kubectl apply -f manifests/bluegreen/deployments.yaml
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: notice-board-blue
+  namespace: nb-02230126
+  labels:
+    app: notice-board
+    # Select workloads for declarative pruning.
+    cte412/release-group: notice-board-workload
+spec:
+  # Each colour has three replicas.
+  replicas: 3
+  # Retain the readiness stability setting from Task 6.
+  minReadySeconds: 5
+  # Keep Pods available during future declarative changes.
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxUnavailable: 0
+      maxSurge: 1
+  selector:
+    matchLabels:
+      app: notice-board
+      slot: blue
+  template:
+    metadata:
+      labels:
+        app: notice-board
+        version: "1.0.0"
+        # Identifies the blue release.
+        slot: blue
+    spec:
+      containers:
+        - name: notice-board
+          image: notice-board:02230126-1.0.0
+          # Images are loaded locally; registry pulls are forbidden.
+          imagePullPolicy: Never
+          ports:
+            - name: http
+              containerPort: 8080
+          # Same resource settings as Task 3.
+          resources:
+            requests:
+              cpu: 50m
+              memory: 64Mi
+            limits:
+              cpu: 200m
+              memory: 128Mi
+          # Only healthy Pods receive production traffic.
+          readinessProbe:
+            httpGet:
+              path: /healthz
+              port: http
+            periodSeconds: 2
+            timeoutSeconds: 1
+            failureThreshold: 3
+          # /version checks responsiveness without mistaking
+          # the intentional /healthz warm-up for a crashed process.
+          livenessProbe:
+            httpGet:
+              path: /version
+              port: http
+            initialDelaySeconds: 10
+            periodSeconds: 10
+            timeoutSeconds: 2
+            failureThreshold: 3
+
+---
+# Purpose: Run the green release alongside blue.
+# Apply: kubectl apply -f manifests/bluegreen/deployments.yaml
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: notice-board-green
+  namespace: nb-02230126
+  labels:
+    app: notice-board
+    cte412/release-group: notice-board-workload
+spec:
+  replicas: 3
+  minReadySeconds: 5
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxUnavailable: 0
+      maxSurge: 1
+  selector:
+    matchLabels:
+      app: notice-board
+      slot: green
+  template:
+    metadata:
+      labels:
+        app: notice-board
+        version: "1.1.0"
+        slot: green
+    spec:
+      containers:
+        - name: notice-board
+          image: notice-board:02230126-1.1.0
+          imagePullPolicy: Never
+          ports:
+            - name: http
+              containerPort: 8080
+          resources:
+            requests:
+              cpu: 50m
+              memory: 64Mi
+            limits:
+              cpu: 200m
+              memory: 128Mi
+          readinessProbe:
+            httpGet:
+              path: /healthz
+              port: http
+            periodSeconds: 2
+            timeoutSeconds: 1
+            failureThreshold: 3
+          livenessProbe:
+            httpGet:
+              path: /version
+              port: http
+            initialDelaySeconds: 10
+            periodSeconds: 10
+            timeoutSeconds: 2
+            failureThreshold: 3
+          # Read the feature flag from the shared ConfigMap.
+          env:
+            - name: FEATURE_PINNED
+              valueFrom:
+                configMapKeyRef:
+                  name: notice-board-flags
+                  key: FEATURE_PINNED

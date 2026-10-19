@@ -9,6 +9,7 @@ metadata:
   namespace: nb-02230126
   labels:
     app: notice-board
+    cte412/release-group: notice-board-workload
   annotations:
     # Record the reason for this failed-release revision.
     kubernetes.io/change-cause: "Task 6 broken release 1.1.0"

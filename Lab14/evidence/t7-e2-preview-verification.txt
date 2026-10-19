@@ -1,0 +1,4 @@
+Production:
+{"version": "1.0.0", "student": "02230126", "pod": "notice-board-blue-ff95bdfc8-46fbg"}
+Green preview:
+{"version": "1.1.0", "student": "02230126", "pod": "notice-board-green-787654b648-p8mcj"}
