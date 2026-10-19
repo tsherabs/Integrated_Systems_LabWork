@@ -1,0 +1,16 @@
+# Purpose: Create a dedicated namespace for the Campus Notice Board.
+# Apply: kubectl apply -f manifests/base/namespace.yaml
+
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: nb-02230126
+  labels:
+    # Groups resources belonging to the Campus Notice Board.
+    app.kubernetes.io/part-of: campus-notice-board
+
+    # Identifies the practical as required by the lab.
+    cte412/practical: "06"
+  annotations:
+    # Records the student responsible for this namespace.
+    cte412/student-name: "Jigme Tsherab Damchoe"

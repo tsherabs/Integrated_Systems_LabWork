@@ -1,0 +1,18 @@
+# Purpose: Create a three-node kind cluster for Practical 15.
+# Apply: kind create cluster --config cluster/kind-cluster.yaml
+
+kind: Cluster
+apiVersion: kind.x-k8s.io/v1alpha4
+
+# Use one control-plane and two workers for the assessed lab.
+nodes:
+  - role: control-plane
+    # Bind locally to prevent access from outside the Mac.
+    extraPortMappings:
+      - containerPort: 30090
+        hostPort: 30090
+        listenAddress: "127.0.0.1"
+        protocol: TCP
+
+  - role: worker
+  - role: worker

@@ -1,0 +1,4 @@
+NAME                            STATUS   ROLES           AGE   VERSION   INTERNAL-IP   EXTERNAL-IP   OS-IMAGE                       KERNEL-VERSION            CONTAINER-RUNTIME
+cte412-02230126-control-plane   Ready    control-plane   13m   v1.37.0   172.22.0.6    <none>        Debian GNU/Linux 13 (trixie)   7.0.14-linuxkit (arm64)   containerd://2.3.4
+cte412-02230126-worker          Ready    <none>          13m   v1.37.0   172.22.0.7    <none>        Debian GNU/Linux 13 (trixie)   7.0.14-linuxkit (arm64)   containerd://2.3.4
+cte412-02230126-worker2         Ready    <none>          13m   v1.37.0   172.22.0.8    <none>        Debian GNU/Linux 13 (trixie)   7.0.14-linuxkit (arm64)   containerd://2.3.4

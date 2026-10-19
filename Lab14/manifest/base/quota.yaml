@@ -1,0 +1,27 @@
+# Purpose: Restrict CPU, memory, Pods and Services in the namespace.
+# Apply: kubectl apply -f manifests/base/quota.yaml
+
+apiVersion: v1
+kind: ResourceQuota
+metadata:
+  name: notice-board-quota
+  namespace: nb-02230126
+spec:
+  hard:
+    # Total guaranteed CPU requests must not exceed 1 core.
+    requests.cpu: "1"
+
+    # Total guaranteed memory requests must not exceed 1 GiB.
+    requests.memory: 1Gi
+
+    # Total CPU limits must not exceed 2 cores.
+    limits.cpu: "2"
+
+    # Total memory limits must not exceed 2 GiB.
+    limits.memory: 2Gi
+
+    # Allow up to 15 Pods, including release and monitor Pods.
+    pods: "15"
+
+    # Allow up to 4 Services, including the preview Service.
+    count/services: "4"

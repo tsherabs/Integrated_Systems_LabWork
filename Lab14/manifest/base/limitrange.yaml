@@ -1,0 +1,33 @@
+# Purpose: Supply default and maximum container resources.
+# Apply: kubectl apply -f manifests/base/limitrange.yaml
+
+apiVersion: v1
+kind: LimitRange
+metadata:
+  name: notice-board-limits
+  namespace: nb-02230126
+spec:
+  limits:
+    - type: Container
+
+      # Default CPU limit of 200m leaves room for
+      # multiple application replicas within the 2-core quota.
+      default:
+        cpu: 200m
+        memory: 128Mi
+
+      # Default CPU request of 50m allows several containers
+      # while remaining below the 1-core requests quota.
+      defaultRequest:
+        cpu: 50m
+        memory: 64Mi
+
+      # Prevent one container from consuming most of the quota.
+      max:
+        cpu: 500m
+        memory: 512Mi
+
+      # Require a small minimum reservation per container.
+      min:
+        cpu: 10m
+        memory: 16Mi
