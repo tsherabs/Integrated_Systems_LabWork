@@ -1,0 +1,12 @@
+
+Strategy: recreate
+1.0.0 responses: 228
+1.1.0 responses: 224
+No observed mixed-version overlap
+
+Strategy: rolling
+1.0.0 responses: 111
+1.1.0 responses: 122
+Observed mixed window: 23.0 seconds
+Start: 2026-10-19T16:46:14+00:00
+End: 2026-10-19T16:46:37+00:00

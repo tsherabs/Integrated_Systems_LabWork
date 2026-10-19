@@ -1,5 +1,5 @@
 
-# Purpose: Deploy three replicas of Campus Notice Board v1.0.0.
+# Purpose: Release Notice Board v1.1.0 using Recreate.
 # Apply: kubectl apply -f manifests/rolling/deployment.yaml
 
 apiVersion: apps/v1
@@ -10,17 +10,17 @@ metadata:
   labels:
     app: notice-board
 spec:
-  # Three replicas provide multiple available API instances.
+  # Keep three application replicas.
   replicas: 3
 
-  # Use a rolling strategy, to be explicitly tested in Task 5.
+  # Recreate terminates old replicas before creating new ones.
   strategy:
     type: RollingUpdate
-    rollingUpdate:
-      # Keep all three old Pods available during updates.
-      maxUnavailable: 0
-      # Allow only one extra Pod during an update.
+    rollingUpdate: 
+      maxUnavailable: 0 
       maxSurge: 1
+  minReadySeconds: 5
+
 
   selector:
     matchLabels:
@@ -30,22 +30,25 @@ spec:
     metadata:
       labels:
         app: notice-board
-        version: "1.0.0"
+        # Label Pods with the new application version.
+        version: "1.1.0"
+      annotations:
+        # Records why this deployment revision was created.
+        kubernetes.io/change-cause: "Task 5 Recreate release to 1.1.0"
 
     spec:
       containers:
         - name: notice-board
-          image: notice-board:02230126-1.0.0
+          image: notice-board:02230126-1.1.0
 
-          # Images are preloaded into kind; never pull from a registry.
+          # Only use images previously loaded into kind.
           imagePullPolicy: Never
 
           ports:
             - name: http
               containerPort: 8080
 
-          # Each Pod has a small guaranteed resource allocation.
-          # Three baseline Pods request 150m CPU and 192Mi.
+          # Stay within the namespace quota.
           resources:
             requests:
               cpu: 50m
@@ -54,8 +57,7 @@ spec:
               cpu: 200m
               memory: 128Mi
 
-          # Readiness tests whether a Pod can receive traffic.
-          # The app reports unhealthy during its first five seconds.
+          # Only ready application instances receive requests.
           readinessProbe:
             httpGet:
               path: /healthz
@@ -64,9 +66,8 @@ spec:
             timeoutSeconds: 1
             failureThreshold: 3
 
-          # Liveness uses /version, not /healthz.
-          # The five-second warm-up should not restart a healthy
-          # process that simply isn't ready to serve traffic yet.
+          # Liveness checks /version, not /healthz, because
+          # /healthz intentionally fails during application warm-up.
           livenessProbe:
             httpGet:
               path: /version
